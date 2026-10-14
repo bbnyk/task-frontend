@@ -36,7 +36,7 @@ const taskTitles = tasks.map(task => task.title);
 // เพิ่มงานใหม่
 const addTask = async (title, priority) => {
     try {
-        await fetch('http://localhost:3000/tasks', {
+        await fetch('https://cpe-task-api-yerk.onrender.com/tasks', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // ต้องบอกเซิร์ฟเวอร์ว่าส่ง JSON ไป
@@ -55,7 +55,7 @@ const addTask = async (title, priority) => {
 // เปลี่ยนสถานะงาน
 const toggleTaskStatus = async (id) => {
     try {
-        await fetch(`http://localhost:3000/tasks/${id}`, {
+        await fetch(`https://cpe-task-api-yerk.onrender.com/tasks/${id}`, {
             method: 'PUT',
         });
         fetchTasks(); //ดึงข้อมูลใหม่
@@ -68,7 +68,7 @@ const toggleTaskStatus = async (id) => {
 // ลบงาน
 const deleteTask = async (id) => {
     try {
-        await fetch(`http://localhost:3000/tasks/${id}`, {
+        await fetch(`https://cpe-task-api-yerk.onrender.com/tasks/${id}`, {
             method: 'DELETE',
         });
         fetchTasks(); //ดึงข้อมูลใหม่
@@ -84,7 +84,7 @@ const fetchTasks = async () => {
         taskListElement.innerHTML = "<h3 style='text-align: content;'>⏳ กำลังดึงข้อมูลจากเซิร์ฟเวอร์...</h3>";
 
         // ใช้ fetch ไปขอข้อมูล และใส่ await เพื่อบอกให้ "รอจนกว่าข้อมูลจะมาถึง"
-        const response = await fetch('http://localhost:3000/tasks');
+        const response = await fetch('https://cpe-task-api-yerk.onrender.com/tasks');
 
         // แปลงผลลัพธ์ที่ได้ให้กลายเป็นออบเจกต์ JSON
         const data = await response.json();
